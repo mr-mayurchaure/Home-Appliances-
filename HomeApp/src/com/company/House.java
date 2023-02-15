@@ -19,8 +19,6 @@ public class House {
         return rooms;
     }
 
-
-
     public Room getRoomByType(String roomType) {
         for (Room room : rooms) {
             if (room.getRoomType().equals(roomType)) {
@@ -49,4 +47,11 @@ public class House {
             System.out.println(roomType + " room not found in house.");
         }
     }
+
+    // Check room status
+    public void roomStatus(String roomType){
+                Room room = new Room();
+                System.out.println("Room Type: "+roomType);
+    }
+
 }

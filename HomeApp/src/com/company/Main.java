@@ -9,16 +9,17 @@ public class Main {
         while (true) {
             System.out.println("1. Check rooms and devices");
             System.out.println("2. Turn on/off device");
-            System.out.println("3. Exit");
+            System.out.println("3. Check the status of room");
+            System.out.println("4. Exit");
             System.out.print("Enter your choice: ");
 
             Scanner scanner = new Scanner(System.in);
             int option = scanner.nextInt();
 
-            if(option == 3){
+            if (option == 4) {
                 break;
             }
-            switch (option){
+            switch (option) {
                 case 1:
                     Room kitchen = new Room("Kitchen");
                     kitchen.addDevice("Gas-System");
@@ -45,45 +46,61 @@ public class Main {
                     }
 
                     int numOfRooms = house.getRooms().size();
-                    System.out.println("In the house there are "+numOfRooms+" rooms.");
+                    System.out.println("In the house there are " + numOfRooms + " rooms.");
                     System.out.println();
-
-                    System.out.print("Enter 0 to go main menu: ");
-                    int goToMain = scanner.nextInt();
-                    if (goToMain == 0) {
-                        break;
-                    }
+                    break;
 
                 case 2:
-                        while(true){
-                            System.out.println();
-                            System.out.println("Device turn on/off: ");
-                            System.out.println("1. Turn on device");
-                            System.out.println("2. Turn off device");
-                            System.out.println("3. Go back ");
-                            System.out.print("Enter your choice: ");
-                            int onOff = scanner.nextInt();
-                            if (onOff == 0) {
-                                break;
-                            }
-
-                            switch (onOff){
-                                case 1:
-                                    System.out.print("Enter RoomType: ");
-                                    String selectRoomType = scanner.next();
-                                    System.out.print("Enter Device: ");
-                                    String selectDevice = scanner.next();
-                                    house.turnOnDevice(selectRoomType,selectDevice);
-                                    break;
-                                case 2:
-                                    System.out.print("Enter RoomType: ");
-                                    selectRoomType = scanner.next();
-                                    System.out.print("Enter Device: ");
-                                    selectDevice = scanner.next();
-                                    house.turnOffDevice(selectRoomType,selectDevice);
-                                    break;
-                            }
+                    while (true) {
+                        System.out.println();
+                        System.out.println("Device turn on/off: ");
+                        System.out.println("1. Turn on device");
+                        System.out.println("2. Turn off device");
+                        System.out.println("3. Go back ");
+                        System.out.print("Enter your choice: ");
+                        int onOff = scanner.nextInt();
+                        System.out.println();
+                        if (onOff == 3) {
+                            break;
                         }
+
+                        switch (onOff) {
+                            case 1:
+                                System.out.print("Enter RoomType: ");
+                                String selectRoomType = scanner.next();
+                                System.out.print("Enter Device: ");
+                                String selectDevice = scanner.next();
+                                house.turnOnDevice(selectRoomType, selectDevice);
+                                break;
+                            case 2:
+                                System.out.print("Enter RoomType: ");
+                                selectRoomType = scanner.next();
+                                System.out.print("Enter Device: ");
+                                selectDevice = scanner.next();
+                                house.turnOffDevice(selectRoomType, selectDevice);
+                                break;
+
+                        }
+                    }
+                    break;
+
+                case 3:
+                    while (true) {
+                        System.out.println();
+                        System.out.println("To check the status of each room and the devices in it, Fill the details: ");
+                        System.out.print("Enter RoomType: ");
+                        String selectRoomType = scanner.next();
+                        System.out.print("Enter Device: ");
+                        String selectDevice = scanner.next();
+
+                        house.roomStatus(selectRoomType);
+                        Room room = new Room();
+                        room.deviceStatus(selectDevice);
+
+                        break;
+
+                    }
+
             }
         }
     }

@@ -8,6 +8,9 @@ public class Room {
     List<String> devices;
     boolean isActive;
 
+    public Room() {
+    }
+
     public Room(String roomType) {
         this.roomType = roomType;
         this.devices = new ArrayList<String>();
@@ -50,5 +53,17 @@ public class Room {
             System.out.println();
         }
     }
+
+    // Active status of device
+    public List<String> deviceStatus(String selectDevice){
+        if (isActive = true){
+            System.out.println("Device "+selectDevice+" is ON");
+        }else {
+            System.out.println("Device "+selectDevice+" is OFF");
+        }
+        return devices;
+    }
+
+
 }
 
